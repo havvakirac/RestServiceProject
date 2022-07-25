@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CITYLISTDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CITYLIST">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_ID" Type="Int64" />
+    <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Int64" />
+    <Property Name="Lon" Type="Int64" />
+  </EntityType>
+  <EntityContainer Name="CITYLISTDBEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CITYLISTs" EntityType="Self.CITYLIST" />
+    <FunctionImport Name="SP_ALL_ID_AND_CITYNAME" ReturnType="Collection(CITYLISTDBModel1.SP_ALL_ID_AND_CITYNAME_Result)" />
+    <FunctionImport Name="SP_GET_CITY" ReturnType="Collection(Int64)">
+      <Parameter Name="CITY_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_CITY_NAME" ReturnType="Collection(CITYLISTDBModel1.SP_GET_CITY_NAME_Result)">
+      <Parameter Name="CITY_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_ALL_ID_AND_CITYNAME_Result">
+    <Property Type="Int64" Name="City_ID" Nullable="true" />
+    <Property Type="String" Name="City_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_GET_CITY_NAME_Result">
+    <Property Type="Int64" Name="City_ID" Nullable="true" />
+    <Property Type="String" Name="City_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

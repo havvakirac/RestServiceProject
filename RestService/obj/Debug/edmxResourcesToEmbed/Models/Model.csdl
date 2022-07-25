@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CITYLISTDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/11/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CITYLISTDBEntities2" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_GET_CITY" ReturnType="Collection(Int64)">
+      <Parameter Name="CITY_NAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ALL_ID_AND_CITYNAME" ReturnType="Collection(CITYLISTDBModel.SP_ALL_ID_AND_CITYNAME_Result)" />
+    <FunctionImport Name="SP_GET_CITY_NAME" ReturnType="Collection(CITYLISTDBModel.SP_GET_CITY_NAME_Result)">
+      <Parameter Name="CITY_ID" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SP_USER" ReturnType="Collection(CITYLISTDBModel.SP_USER_Result)">
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CITYLISTs" EntityType="CITYLISTDBModel.CITYLIST" />
+    <EntitySet Name="USERs" EntityType="CITYLISTDBModel.USER" />
+  </EntityContainer>
+  <ComplexType Name="SP_ALL_ID_AND_CITYNAME_Result">
+    <Property Type="Int64" Name="City_ID" Nullable="true" />
+    <Property Type="String" Name="City_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_GET_CITY_NAME_Result">
+    <Property Type="Int64" Name="City_ID" Nullable="true" />
+    <Property Type="String" Name="City_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_USER_Result">
+    <Property Type="String" Name="User_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="Password" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="CITYLIST">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="City_ID" Type="Int64" />
+    <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Int64" />
+    <Property Name="Lon" Type="Int64" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+</Schema>

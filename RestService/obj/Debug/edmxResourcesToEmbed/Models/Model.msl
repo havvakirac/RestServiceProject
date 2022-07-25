@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CITYLISTDBModelStoreContainer" CdmEntityContainer="CITYLISTDBEntities2">
+    <FunctionImportMapping FunctionImportName="SP_GET_CITY" FunctionName="CITYLISTDBModel.Store.SP_GET_CITY" />
+    <FunctionImportMapping FunctionImportName="SP_ALL_ID_AND_CITYNAME" FunctionName="CITYLISTDBModel.Store.SP_ALL_ID_AND_CITYNAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CITYLISTDBModel.SP_ALL_ID_AND_CITYNAME_Result">
+          <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_CITY_NAME" FunctionName="CITYLISTDBModel.Store.SP_GET_CITY_NAME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CITYLISTDBModel.SP_GET_CITY_NAME_Result">
+          <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_USER" FunctionName="CITYLISTDBModel.Store.SP_USER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CITYLISTDBModel.SP_USER_Result">
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CITYLISTs">
+      <EntityTypeMapping TypeName="CITYLISTDBModel.CITYLIST">
+        <MappingFragment StoreEntitySet="CITYLIST">
+          <ScalarProperty Name="Lon" ColumnName="Lon" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+          <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="CITYLISTDBModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
